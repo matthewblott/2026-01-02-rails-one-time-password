@@ -3,11 +3,7 @@ Rails.application.routes.draw do
   post "send_otp", to: "sessions#send_otp"
   get  "validate_otp", to: "sessions#validate_otp"
   post "sign_in", to: "sessions#create"
-
-  # get  "enter_otp", to: "sessions#enter_otp"
-  # post "enter_otp", to: "sessions#create"
-
-  resources :sessions, only: [:index, :show, :destroy]
+  post "sign_out", to: "sessions#destroy"
 
   get "about", to: "home#about"
   root "home#index"

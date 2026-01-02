@@ -1,6 +1,11 @@
 <h1>Home</h1>
 
-<form action="/send_otp" method="post">
-  <input type="email" name="email" placeholder="alice@example.com">
-  <button>Send OTP</button>
+<form id="sign_out_form"
+      action="<%= sign_out_path %>"
+      method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 </form>
+
+<button form="sign_out_form">
+  Sign Out
+</button>
