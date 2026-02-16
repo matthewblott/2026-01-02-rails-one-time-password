@@ -64,4 +64,20 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # Set host to be used by links generated in mailer templates.
+  # config.action_mailer.default_url_options = { host: Rails.application.credentials.dig(:domain) }
+
+  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
+  config.action_mailer.smtp_settings = {
+    user_name: Rails.application.credentials.dig(:smtp, :user_name),
+    password: Rails.application.credentials.dig(:smtp, :password),
+    address: Rails.application.credentials.dig(:smtp, :address),
+    port: Rails.application.credentials.dig(:smtp, :port),
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
 end
